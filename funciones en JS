@@ -1,0 +1,108 @@
+//Iteradores
+//Objetos
+
+let user = {
+    name: "Danna",
+    lastname: "Lopez",
+    age: 21,
+    email: "dannamishelle.23@gmail.com",
+    address: {
+        city: "San Gabriel",
+        telephone: "0990754359"
+    },
+    password: "1234567"
+}
+
+user.image = "avatar.png"
+
+delete user.password               // Eliminar la contraseña del objeto
+
+console.log(user)
+
+//Desestructuracion
+//console.log(user.name)
+//console.log(user.lastName)
+
+//Asignar cada valor a una variable
+let{name, lastName, age, email: correo, address, image} = user
+console.log(name)
+console.log(lastName)
+console.log(correo)
+console.log(address.city)
+
+const friends = {
+    status: true,
+    friendsList: ["Rodrigo", "Julia"],
+    sendMail() {
+        return `Send email to ${this.friendsList[0]}`
+    }
+}
+
+console.log(friends.sendMail())
+
+//ES6: Spreed Operaor
+const allInformation = {...user, ...friends}
+console.log(allInformation)
+
+console.log(Object.values(user))        // Mandar la informacion del objeto en un arreglo
+console.log(Object.values(user).includes(""))    //Buscar que el valor del objeto 'user' contenga valores en blanco
+
+//Funciones
+//Conjunto de pasos para realizar una tarea especifica
+
+//Tipos de funciones
+//Funcion declarada
+function validateUser() {
+    console.log("Usuario validado")
+}
+
+//Funcion expresada
+const validateRol = function() {
+    console.log("Rol validado")
+}
+
+//ES6: Funciones de flecha
+const validateMail = () => {
+    console.log("Mail validado.")
+}
+
+//Rest operator vs spread operator
+
+//REST OPERATOR: Los parametros de una funcion son almacenados luego en forma de arreglo
+const finalPrice = function (a,b, ...args) {
+    console.log(a,b,args)
+}
+
+finalPrice(1, 2, 5, 6, 7, 8)
+
+//Paranetros por default
+const price = function ({a=56,b}, ...rest) {
+    console.log(a,b, rest)
+}
+
+price({b:99}, 1, 2, 4, 6)
+
+//return
+//Diferentes tipos de retorno
+
+function typeOfReturn () {
+    //return 123
+    //return true
+    //return "Danna"
+    //return ['Jaime', 'Laura']
+    //return {
+        //city: "Paris",
+        //country: "Francia"
+    //}
+    //Funcion anonima 
+     return function() {
+        console.log("Hola, bienvenidos a la clase de DESARROLLO APLICACIONES WEB GR2")
+    }
+}
+
+//1era forma de visualizar el resultado
+//console.log(typeOfReturn())
+
+//2da forma 
+let result = typeOfReturn()                 // Asignar la funcion a una variable
+result()                                    // Ya no es necesario usar console.log
